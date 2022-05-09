@@ -4,3 +4,4 @@ objects/
 *.o
 a.out
 so_long
+.normignore

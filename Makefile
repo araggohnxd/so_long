@@ -31,7 +31,7 @@ ${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
 ${LIBFT}:
-						${MAKE} -C ${LIBFT_PATH}
+						${MAKE} -C ${LIBFT_PATH} bonus
 
 ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
