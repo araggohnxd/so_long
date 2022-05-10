@@ -9,7 +9,7 @@ SRCS =				ft_atoi.c ft_calloc.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.
 					ft_newlinecpy.c ft_get_next_line.c ft_printf.c ft_itoa_base.c \
 					ft_handler_character.c ft_handler_decimal.c ft_handler_percent.c \
 					ft_handler_hex_lower.c ft_handler_hex_upper.c ft_handler_pointer.c \
-					ft_handler_string.c ft_handler_unsigned.c
+					ft_handler_string.c ft_handler_unsigned.c ft_strjoin_free.c
 OBJ_FILES =			${SRCS:.c=.o}
 OBJS =				${addprefix ${OBJS_PATH}/, ${OBJ_FILES}}
 
