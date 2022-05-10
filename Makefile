@@ -6,7 +6,7 @@ LIBFT_PATH = 			libraries/libft
 MINILIBX =				${MINILIBX_PATH}/libmlx.a
 MINILIBX_PATH =			libraries/minilibx
 
-SOURCES_FILES =			main.c
+SOURCES_FILES =			so_long.c
 OBJECTS_FILES =			${SOURCES_FILES:.c=.o}
 SOURCES_PATH =			sources
 OBJECTS_PATH =			objects
@@ -16,7 +16,7 @@ OBJECTS =				$(addprefix ${OBJECTS_PATH}/, ${OBJECTS_FILES})
 HEADER =				${SOURCES_PATH}/so_long.h
 
 REMOVE =				rm -rf
-CC =					cc -Wall -Wextra -Werror
+CC =					cc -g3 -Wall -Wextra -Werror
 MLXFLAGS =				-lXext -lX11
 
 all:					${NAME}
@@ -35,6 +35,12 @@ ${LIBFT}:
 
 ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
+
+run:					all
+						./so_long maps/valid.ber
+
+vg:						all
+						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/valid.ber
 
 clean:
 						$(MAKE) -C $(LIBFT_PATH) clean
