@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 22:01:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/13 22:02:00 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:48:59 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	ft_free_split(char **split)
 		split[i++] = NULL;
 	}
 	free(split);
-	split = NULL;
 }
