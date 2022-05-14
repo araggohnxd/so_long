@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:08:22 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/13 22:05:38 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:43:36 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static void	ft_fill_strings(const char *s, char c, char **split, size_t size)
 * @param c Character used as delimiter.
 * @param split The array that will contain the words.
 * @param size Number of words, calculated in ft_count_words().
-* @return Nothing.
+* @return 1 if the allocation was successful, 0 otherwise.
 */
-static void	ft_malloc_strings(const char *s, char c, char **split, size_t size)
+static int	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -70,10 +70,11 @@ static void	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 		if (split[j] == NULL)
 		{
 			ft_free_split(split);
-			break ;
+			return (0);
 		}
 		j++;
 	}
+	return (1);
 }
 
 /**
@@ -119,8 +120,7 @@ char	**ft_split(char const *s, char c)
 	split = malloc(sizeof(char *) * (str_count + 1));
 	if (split == NULL)
 		return (NULL);
-	ft_malloc_strings(s, c, split, str_count);
-	if (split == NULL)
+	if (!ft_malloc_strings(s, c, split, str_count))
 		return (NULL);
 	ft_fill_strings(s, c, split, str_count);
 	return (split);
