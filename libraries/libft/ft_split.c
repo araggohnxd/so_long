@@ -6,75 +6,47 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:08:22 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/14 16:43:36 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:47:40 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
-* @brief Fill the memory allocated in ft_malloc_strings() with its
-* specific words.
-* @param s String containing each word.
+* @brief Allocates and fills the array of strings created
+* in ft_split().
+* @param split The array that will contain the strings.
+* @param s String to be splitted.
 * @param c Character used as delimiter.
-* @param split The array that will contain the words.
-* @param size Number of words, calculated in ft_count_words().
-* @return Nothing.
+* @param words How many words to split string s in.
+* @return A pointer to the created array of strings or NULL on error.
 */
-static void	ft_fill_strings(const char *s, char c, char **split, size_t size)
+static char	**ft_fill_split(char **split, const char *s, char c, int words)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int		start;
+	int		end;
+	int		index;
 
-	i = 0;
-	j = 0;
-	while (s[i] && j < size)
+	start = 0;
+	index = 0;
+	while (index < words)
 	{
-		k = 0;
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-			split[j][k++] = s[i++];
-		split[j][k] = '\0';
-		j++;
-	}
-	split[j] = NULL;
-}
-
-/**
-* @brief Allocate the memory needed for each word of the array
-* of strings created in ft_split().
-* @param s String containing each word.
-* @param c Character used as delimiter.
-* @param split The array that will contain the words.
-* @param size Number of words, calculated in ft_count_words().
-* @return 1 if the allocation was successful, 0 otherwise.
-*/
-static int	ft_malloc_strings(const char *s, char c, char **split, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	size_t	str_size;
-
-	i = 0;
-	j = 0;
-	while (s[i] && j < size)
-	{
-		str_size = 0;
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i++] != c)
-			str_size++;
-		split[j] = malloc(sizeof(char) * (str_size + 1));
-		if (split[j] == NULL)
+		while (s[start] == c)
+			start += 1;
+		end = start;
+		while (s[end] != c && s[end])
+			end += 1;
+		split[index] = (char *)ft_calloc((end - start) + 1, sizeof(char));
+		if (!split[index])
 		{
 			ft_free_split(split);
-			return (0);
+			return (NULL);
 		}
-		j++;
+		ft_strlcpy(split[index], s + start, (end - start) + 1);
+		start = end;
+		index += 1;
 	}
-	return (1);
+	return (split);
 }
 
 /**
@@ -87,41 +59,37 @@ static int	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 */
 static int	ft_count_words(const char *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	str_count;
+	int	words;
+	int	is_word;
 
-	i = 0;
-	str_count = 0;
-	while (s[i])
+	words = 0;
+	is_word = 0;
+	while (*s)
 	{
-		j = 0;
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
+		if (*s != c && !is_word)
 		{
-			j++;
-			i++;
+			words += 1;
+			is_word = 1;
 		}
-		if (j > 0)
-			str_count++;
+		if (*s == c)
+			is_word = 0;
+		s++;
 	}
-	return (str_count);
+	return (words);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
-	size_t	str_count;
+	int		words;
 
-	if (!s)
+	words = ft_count_words(s, c);
+	split = (char **)ft_calloc(words + 1, sizeof(char *));
+	if (!split)
 		return (NULL);
-	str_count = ft_count_words(s, c);
-	split = malloc(sizeof(char *) * (str_count + 1));
-	if (split == NULL)
+	split = ft_fill_split(split, s, c, words);
+	if (!split)
 		return (NULL);
-	if (!ft_malloc_strings(s, c, split, str_count))
-		return (NULL);
-	ft_fill_strings(s, c, split, str_count);
+	split[words] = NULL;
 	return (split);
 }

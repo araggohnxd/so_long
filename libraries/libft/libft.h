@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:43:19 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/13 22:02:18 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:25:24 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -530,14 +530,72 @@ size_t	ft_newlinecpy(char *dst, const char *src, size_t index);
 */
 char	*ft_itoa_base(t_ulong n, char *base);
 
+/**
+* @brief Print an output to the standard output stream (terminal),
+* according to a format specified as a parameter
+* (accepted arguments: cspdiuxX%).
+* @param format Desired output formatting.
+* @param ... Variadic arguments.
+* @return The number of characters printed.
+*/
 int		ft_printf(const char *format, ...);
+
+/**
+* @brief Handles ft_printf()'s %c argument.
+* @param character Character to be printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_character(char character);
+
+/**
+* @brief Handles ft_printf()'s %d and %i arguments.
+* @param decimal Decimal or integer to be printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_decimal(int decimal);
+
+/**
+* @brief Handles ft_printf()'s %x argument.
+* @param num Number to be converted to
+* lowercase hexadecimal and printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_hex_lower(t_uint num);
+
+/**
+* @brief Handles ft_printf()'s %X argument.
+* @param num Number to be converted to
+* uppercase hexadecimal and printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_hex_upper(t_uint num);
+
+/**
+* @brief Handles ft_printf()'s %% argument.
+* @return The number of characters printed.
+*/
 int		ft_handler_percent(void);
+
+/**
+* @brief Handles ft_printf()'s %p argument.
+* @param pointer_size Pointer to have it's
+* address printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_pointer(t_ulong pointer_size);
+
+/**
+* @brief Handles ft_printf()'s %s argument.
+* @param string String to be printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_string(char *string);
+
+/**
+* @brief Handles ft_printf()'s %u argument.
+* @param uint Unsigned number to be printed.
+* @return The number of characters printed.
+*/
 int		ft_handler_unsigned(t_uint uint);
 
 #endif
