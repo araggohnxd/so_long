@@ -37,7 +37,7 @@ ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
 run:					all
-						./so_long maps/valid.ber
+						./so_long maps/valid.ber | cat -e
 
 vg:						all
 						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/valid.ber
@@ -53,4 +53,4 @@ fclean:					clean
 
 re:						fclean all
 
-.PHONY:					all clean fclean re
+.PHONY:					all clean fclean re run vg
