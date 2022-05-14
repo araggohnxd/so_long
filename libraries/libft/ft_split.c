@@ -6,21 +6,21 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:08:22 by maolivei          #+#    #+#             */
-/*   Updated: 2022/04/10 02:28:26 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/13 22:05:38 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Fill the memory allocated in ft_malloc_strings() with its
- * specific words.
- * @param s String containing each word.
- * @param c Character used as delimiter.
- * @param split The array that will contain the words.
- * @param size Number of words, calculated in ft_count_words().
- * @return Nothing.
-**/
+* @brief Fill the memory allocated in ft_malloc_strings() with its
+* specific words.
+* @param s String containing each word.
+* @param c Character used as delimiter.
+* @param split The array that will contain the words.
+* @param size Number of words, calculated in ft_count_words().
+* @return Nothing.
+*/
 static void	ft_fill_strings(const char *s, char c, char **split, size_t size)
 {
 	size_t	i;
@@ -43,14 +43,14 @@ static void	ft_fill_strings(const char *s, char c, char **split, size_t size)
 }
 
 /**
- * @brief Allocate the memory needed for each word of the array
- * of strings created in ft_split().
- * @param s String containing each word.
- * @param c Character used as delimiter.
- * @param split The array that will contain the words.
- * @param size Number of words, calculated in ft_count_words().
- * @return Nothing.
-**/
+* @brief Allocate the memory needed for each word of the array
+* of strings created in ft_split().
+* @param s String containing each word.
+* @param c Character used as delimiter.
+* @param split The array that will contain the words.
+* @param size Number of words, calculated in ft_count_words().
+* @return Nothing.
+*/
 static void	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 {
 	size_t	i;
@@ -69,7 +69,7 @@ static void	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 		split[j] = malloc(sizeof(char) * (str_size + 1));
 		if (split[j] == NULL)
 		{
-			split = NULL;
+			ft_free_split(split);
 			break ;
 		}
 		j++;
@@ -77,13 +77,13 @@ static void	ft_malloc_strings(const char *s, char c, char **split, size_t size)
 }
 
 /**
- * @brief Counts how many words will the array of strings
- * created by ft_split() contain, using char c as a delimiter
- * of each word inside string s.
- * @param s String to count the words from.
- * @param c Character used as delimiter.
- * @return How many words were found.
-**/
+* @brief Counts how many words will the array of strings
+* created by ft_split() contain, using char c as a delimiter
+* of each word inside string s.
+* @param s String to count the words from.
+* @param c Character used as delimiter.
+* @return How many words were found.
+*/
 static int	ft_count_words(const char *s, char c)
 {
 	size_t	i;

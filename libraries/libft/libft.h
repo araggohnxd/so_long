@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:43:19 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/09 20:17:46 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/13 22:02:18 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 * @return A pointer to the created array of strings or NULL on error.
 */
 char	**ft_split(char const *s, char c);
+
+/**
+* @brief Frees the memory of an array of strings.
+* @param split The array to be freed.
+* @return Nothing.
+*/
+void	ft_free_split(char **split);
 
 /**
 * @brief Applies the function f on each character of the string
