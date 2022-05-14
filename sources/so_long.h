@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/09 19:16:32 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/14 20:19:13 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # define PURPLE "\033[0;35m"
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
+# define RESET "\033[0m"
 
 #endif /* SO_LONG_H */
