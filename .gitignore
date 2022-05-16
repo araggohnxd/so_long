@@ -68,3 +68,5 @@ dkms.conf
 
 .normignore
 so_long
+test.sh
+tests/
