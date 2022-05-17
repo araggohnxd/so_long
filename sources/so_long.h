@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/14 20:19:13 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:18:23 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,16 @@
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
 # define RESET "\033[0m"
+
+typedef struct s_chars {
+	size_t	c_count;
+	size_t	p_count;
+	size_t	e_count;
+	size_t	i;
+	size_t	j;
+	char	c;
+}	t_chars;
+
+int	ft_validate_map(char **map);
 
 #endif /* SO_LONG_H */

@@ -6,46 +6,11 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:31:19 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/17 12:06:26 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	ft_validate_walls(char **map, int map_height)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	--map_height;
-	while (map[0][i] && map[map_height][i])
-		if (map[0][i] != '1' || map[map_height][i++] != '1')
-			return (FALSE);
-	--i;
-	j = 1;
-	while (j <= map_height)
-		if (map[j][0] != '1' || map[j++][i] != '1')
-			return (FALSE);
-	return (TRUE);
-}
-
-static int	ft_validate_map(char **map)
-{
-	int	map_height;
-
-	if (!map)
-		return (FALSE);
-	map_height = 0;
-	while (map[map_height])
-		map_height++;
-	if (map_height < 3 || !ft_validate_walls(map, map_height))
-	{
-		ft_free_split(map);
-		return (FALSE);
-	}
-	return (TRUE);
-}
 
 static char	**ft_get_map(char *map)
 {
