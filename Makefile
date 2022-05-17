@@ -6,7 +6,7 @@ LIBFT_PATH = 			libraries/libft
 MINILIBX =				${MINILIBX_PATH}/libmlx.a
 MINILIBX_PATH =			libraries/minilibx
 
-SOURCES_FILES =			so_long.c
+SOURCES_FILES =			so_long.c map_validation.c
 OBJECTS_FILES =			${SOURCES_FILES:.c=.o}
 SOURCES_PATH =			sources
 OBJECTS_PATH =			objects
