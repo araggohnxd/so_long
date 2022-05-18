@@ -21,6 +21,7 @@ static int	ft_close_game(int keysym, t_window *window)
 
 static int	ft_no_event(void *data)
 {
+	(void) data;
 	return (0);
 }
 
