@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/17 13:18:23 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:49:31 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define PUTS 0
 # include <fcntl.h>
 # include <stdlib.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/minilibx/mlx.h"
 
@@ -36,6 +38,11 @@ typedef struct s_chars {
 	size_t	j;
 	char	c;
 }	t_chars;
+
+typedef struct s_window {
+	char	*mlx_ptr;
+	char	*win_ptr;
+}	t_window;
 
 int	ft_validate_map(char **map);
 
