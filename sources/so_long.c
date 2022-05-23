@@ -6,44 +6,34 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/17 21:56:54 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/23 20:18:44 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_close_game(int keysym, t_window *window)
+static int	ft_init_game(void)
 {
-	if (keysym == XK_Escape)
-		mlx_destroy_window(window->mlx_ptr, window->win_ptr);
-	return (0);
-}
+	t_data	data;
 
-static int	ft_no_event(void *data)
-{
-	(void) data;
-	return (0);
-}
-
-int	ft_init_game(void)
-{
-	t_window	window;
-
-	window.mlx_ptr = mlx_init();
-	if (!window.mlx_ptr)
+	data.mlx_ptr = mlx_init();
+	if (!data.mlx_ptr)
 		return (FALSE);
-	window.win_ptr = mlx_new_window(window.mlx_ptr, 500, 500, "hello world");
-	if (!window.win_ptr)
+	data.win_ptr = mlx_new_window(data.mlx_ptr, WIDTH, HEIGHT, "hello world");
+	if (!data.win_ptr)
 	{
-		mlx_destroy_display(window.mlx_ptr);
-		free(window.mlx_ptr);
+		mlx_destroy_display(data.mlx_ptr);
+		free(data.mlx_ptr);
 		return (FALSE);
 	}
-	mlx_loop_hook(window.mlx_ptr, ft_no_event, &window);
-	mlx_key_hook(window.win_ptr, ft_close_game, &window);
-	mlx_loop(window.mlx_ptr);
-	mlx_destroy_display(window.mlx_ptr);
-	free(window.mlx_ptr);
+	data.image.img_ptr = mlx_new_image(data.mlx_ptr, WIDTH, HEIGHT);
+	data.image.address = mlx_get_data_addr(data.image.img_ptr, &data.image.bpp,
+			&data.image.line_len, &data.image.endian);
+	mlx_loop_hook(data.mlx_ptr, ft_render, &data);
+	mlx_key_hook(data.win_ptr, ft_close_game, &data);
+	mlx_loop(data.mlx_ptr);
+	mlx_destroy_display(data.mlx_ptr);
+	free(data.mlx_ptr);
 	return (TRUE);
 }
 
@@ -57,8 +47,8 @@ static char	**ft_get_map(char *map)
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	join = ft_strdup("");
-	while (1)
+	join = ft_calloc(1, sizeof(char));
+	while (TRUE)
 	{
 		line = ft_get_next_line(fd);
 		if (!line)
@@ -81,13 +71,13 @@ int	main(int argc, char *argv[])
 			ft_printf(RED"[ERROR] Too many arguments.\n"RESET);
 		else if (argc < 2)
 			ft_printf(RED"[ERROR] Map missing.\n"RESET);
-		return (0);
+		return (1);
 	}
 	map = ft_get_map(argv[1]);
 	if (!ft_validate_map(map))
 	{
 		ft_printf(RED"[ERROR] Invalid map.\n"RESET);
-		return (0);
+		return (1);
 	}
 	ft_free_split(map);
 	ft_init_game();

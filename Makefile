@@ -6,7 +6,7 @@ LIBFT_PATH = 			libraries/libft
 MINILIBX =				${MINILIBX_PATH}/libmlx.a
 MINILIBX_PATH =			libraries/minilibx
 
-SOURCES_FILES =			so_long.c map_validation.c
+SOURCES_FILES =			so_long.c map_validation.c render_map.c
 OBJECTS_FILES =			${SOURCES_FILES:.c=.o}
 SOURCES_PATH =			sources
 OBJECTS_PATH =			objects
@@ -17,12 +17,12 @@ HEADER =				${SOURCES_PATH}/so_long.h
 
 REMOVE =				rm -rf
 CC =					cc -g3 -Wall -Wextra -Werror
-MLXFLAGS =				-lXext -lX11
+MLXFLAGS =				-lXext -lX11 -lmlx
 
 all:					${NAME}
 
 ${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${HEADER} ${LIBFT} ${MINILIBX} Makefile
-						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -o ${NAME}
+						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -lm -o ${NAME}
 
 ${OBJECTS_PATH}:
 						mkdir $@

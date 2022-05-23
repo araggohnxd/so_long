@@ -3,22 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/17 21:49:31 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/24 01:50:37 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define PUTS 0
+# define HEIGHT 720
+# define WIDTH 1280
 # include <fcntl.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/minilibx/mlx.h"
+
+// TESTING PURPOSES
+# include <stdio.h>
+// TESTING PURPOSES
 
 # define BLACK "\033[0;30m"
 # define RED "\033[0;31m"
@@ -39,11 +45,32 @@ typedef struct s_chars {
 	char	c;
 }	t_chars;
 
-typedef struct s_window {
-	char	*mlx_ptr;
-	char	*win_ptr;
-}	t_window;
+typedef struct s_img {
+	void	*img_ptr;
+	char	*address;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
-int	ft_validate_map(char **map);
+typedef struct s_data {
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	image;
+}	t_data;
+
+typedef struct s_sqr {
+	int	x;
+	int	y;
+	int	height;
+	int	width;
+	int	color;
+}	t_sqr;
+
+int		ft_validate_map(char **map);
+int		ft_close_game(int keysym, t_data *data);
+void	ft_img_pix_put(t_img *image, int x, int y, int color);
+int		ft_render(t_data *data);
+void	ft_render_square(t_sqr square, t_img *image);
 
 #endif /* SO_LONG_H */
