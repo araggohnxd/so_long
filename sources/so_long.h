@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/24 01:50:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/05/24 20:39:41 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,6 @@
 # define WHITE "\033[0;37m"
 # define RESET "\033[0m"
 
-typedef struct s_chars {
-	size_t	c_count;
-	size_t	p_count;
-	size_t	e_count;
-	size_t	i;
-	size_t	j;
-	char	c;
-}	t_chars;
-
 typedef struct s_img {
 	void	*img_ptr;
 	char	*address;
@@ -57,20 +48,17 @@ typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	image;
+	char	**map;
+	size_t	map_height;
+	size_t	map_width;
+	size_t	c_count;
+	size_t	p_count;
+	size_t	e_count;
 }	t_data;
 
-typedef struct s_sqr {
-	int	x;
-	int	y;
-	int	height;
-	int	width;
-	int	color;
-}	t_sqr;
-
-int		ft_validate_map(char **map);
+int		ft_validate_map(t_data *data);
 int		ft_close_game(int keysym, t_data *data);
 void	ft_img_pix_put(t_img *image, int x, int y, int color);
 int		ft_render(t_data *data);
-void	ft_render_square(t_sqr square, t_img *image);
 
 #endif /* SO_LONG_H */
