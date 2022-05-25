@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/24 20:39:41 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/25 07:25:23 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include <math.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/minilibx/mlx.h"
 
@@ -47,10 +46,14 @@ typedef struct s_img {
 typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	image;
+	void	*img_floor;
+	void	*img_wall;
+	void	*img_collect;
+	void	*img_player;
+	void	*img_exit;
 	char	**map;
-	size_t	map_height;
-	size_t	map_width;
+	int		map_height;
+	int		map_width;
 	size_t	c_count;
 	size_t	p_count;
 	size_t	e_count;

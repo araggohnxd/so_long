@@ -6,36 +6,47 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/24 20:41:57 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/25 05:47:28 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// static int	ft_init_game(void)
-// {
-// 	t_data	data;
+static void	ft_init_images(t_data *data)
+{
+	data->img_floor = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/0.xpm",
+			&data->map_width, &data->map_height);
+	data->img_wall = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/1.xpm",
+			&data->map_width, &data->map_height);
+	data->img_collect = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/C.xpm",
+			&data->map_width, &data->map_height);
+	data->img_player = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/P.xpm",
+			&data->map_width, &data->map_height);
+	data->img_exit = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/E.xpm",
+			&data->map_width, &data->map_height);
+}
 
-// 	data.mlx_ptr = mlx_init();
-// 	if (!data.mlx_ptr)
-// 		return (FALSE);
-// 	data.win_ptr = mlx_new_window(data.mlx_ptr, WIDTH, HEIGHT, "hello world");
-// 	if (!data.win_ptr)
-// 	{
-// 		mlx_destroy_display(data.mlx_ptr);
-// 		free(data.mlx_ptr);
-// 		return (FALSE);
-// 	}
-// 	data.image.img_ptr = mlx_new_image(data.mlx_ptr, WIDTH, HEIGHT);
-// 	data.image.address = mlx_get_data_addr(data.image.img_ptr, &data.image.bpp,
-// 			&data.image.line_len, &data.image.endian);
-// 	mlx_loop_hook(data.mlx_ptr, ft_render, &data);
-// 	mlx_key_hook(data.win_ptr, ft_close_game, &data);
-// 	mlx_loop(data.mlx_ptr);
-// 	mlx_destroy_display(data.mlx_ptr);
-// 	free(data.mlx_ptr);
-// 	return (TRUE);
-// }
+static int	ft_init_game(t_data *data)
+{
+	data->mlx_ptr = mlx_init();
+	if (!data->mlx_ptr)
+		return (FALSE);
+	data->win_ptr = mlx_new_window(data->mlx_ptr,
+			data->map_width, data->map_height, "so_long");
+	if (!data->win_ptr)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		return (FALSE);
+	}
+	ft_init_images(data);
+	mlx_loop_hook(data->mlx_ptr, ft_render, data);
+	mlx_key_hook(data->win_ptr, ft_close_game, data);
+	mlx_loop(data->mlx_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	return (TRUE);
+}
 
 static void	ft_init_data(t_data *data)
 {
@@ -89,7 +100,7 @@ int	main(int argc, char *argv[])
 		ft_printf(RED"[ERROR] Invalid map.\n"RESET);
 		return (1);
 	}
+	ft_init_game(&data);
 	ft_free_split(data.map);
-	// ft_init_game();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 12:06:11 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/24 20:38:18 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/25 07:24:29 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_validate_chars(t_data *data)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	c;
 
 	i = 0;
@@ -43,8 +43,8 @@ static int	ft_validate_chars(t_data *data)
 static int	ft_validate_lines(t_data *data)
 {
 	size_t	first_len;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	c;
 
 	i = 0;
@@ -71,8 +71,8 @@ static int	ft_validate_lines(t_data *data)
 
 static int	ft_validate_walls(t_data *data)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (data->map[0][i] && data->map[data->map_height - 1][i])
@@ -102,5 +102,7 @@ int	ft_validate_map(t_data *data)
 		ft_free_split(data->map);
 		return (FALSE);
 	}
+	data->map_height *= 32;
+	data->map_width *= 32;
 	return (TRUE);
 }
