@@ -37,7 +37,7 @@ ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
 run:					all
-						./so_long maps/valid.ber | cat -e
+						./so_long maps/valid.ber
 
 vg:						all
 						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/valid.ber
