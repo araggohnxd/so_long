@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/25 07:23:01 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/25 07:28:11 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@ int	ft_close_game(int keysym, t_data *data)
 		return (TRUE);
 	}
 	return (FALSE);
-}
-
-void	ft_img_pix_put(t_img *image, int x, int y, int color)
-{
-	char	*pixel;
-	int		i;
-
-	i = image->bpp - 8;
-	pixel = image->address + ((y * image->line_len) + (x * (image->bpp / 8)));
-	while (i >= 0)
-	{
-		if (image->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		else
-			*pixel++ = (color >> (image->bpp - 8 - i)) & 0xFF;
-		i -= 8;
-	}
 }
 
 void	ft_render_sprite(t_data *data, void *image, int x, int y)
