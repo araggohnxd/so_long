@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:55:51 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:33:41 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data {
 	int		player_y;
 	int		collected;
 	int		moves;
+	int		end_game;
 }	t_data;
 
 int		ft_validate_map(t_data *data);
@@ -54,5 +55,6 @@ int		ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);
 int		ft_close_game(t_data *data);
 void	ft_move_player(int keysym, t_data *data);
+int		ft_end_game(t_data *data);
 
 #endif /* SO_LONG_H */

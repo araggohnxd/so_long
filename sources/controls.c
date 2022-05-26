@@ -6,11 +6,18 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:28:25 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:33:36 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_end_game(t_data *data)
+{
+	data->map[data->player_y][data->player_x] = '0';
+	data->end_game = 1;
+	return (1);
+}
 
 int	ft_close_game(t_data *data)
 {
@@ -33,6 +40,8 @@ int	ft_keypress_handler(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape || keysym == XK_q)
 		ft_close_game(data);
+	else if (data->end_game)
+		return (1);
 	else if (keysym == XK_Up || keysym == XK_w
 		||keysym == XK_Left || keysym == XK_a
 		|| keysym == XK_Down || keysym == XK_s
