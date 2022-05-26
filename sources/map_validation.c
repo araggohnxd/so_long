@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 12:06:11 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:08:52 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:44:40 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void	ft_init_data(t_data *data)
 	data->p_count = 0;
 	data->e_count = 0;
 	data->collected = 0;
+	data->moves = 0;
 }
 
 int	ft_validate_map(t_data *data)

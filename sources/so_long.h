@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:30:44 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:55:51 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 # include <fcntl.h>
 # include <stdlib.h>
-# include <errno.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "../libraries/libft/libft.h"
@@ -24,8 +23,10 @@
 # include <stdio.h>
 // TESTING PURPOSES
 
+# define CYAN "\033[0;36m"
 # define RED "\033[0;31m"
 # define RESET "\033[0m"
+# define CLEAR "\e[1;1H\e[2J"
 # define SPRITE_SIZE 32
 
 typedef struct s_data {
@@ -45,6 +46,7 @@ typedef struct s_data {
 	int		player_x;
 	int		player_y;
 	int		collected;
+	int		moves;
 }	t_data;
 
 int		ft_validate_map(t_data *data);
