@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:34:25 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:40:38 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		if (argc > 2)
-			ft_printf(RED"Error\nToo many arguments.\n"RESET);
+			ft_putstr_fd(RED"Error\nToo many arguments.\n"RESET, 2);
 		else if (argc < 2)
-			ft_printf(RED"Error\nMap missing.\n"RESET);
+			ft_putstr_fd(RED"Error\nMap missing.\n"RESET, 2);
 		return (1);
 	}
 	data.map = ft_get_map(argv[1]);
 	if (!ft_validate_map(&data))
 	{
-		ft_printf(RED"Error\nInvalid map.\n"RESET);
+		ft_putstr_fd(RED"Error\nInvalid map.\n"RESET, 2);
 		return (1);
 	}
 	ft_init_game(&data);
