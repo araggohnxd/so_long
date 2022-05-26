@@ -6,35 +6,19 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/25 07:28:11 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/26 22:35:17 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_close_game(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img_floor);
-		mlx_destroy_image(data->mlx_ptr, data->img_wall);
-		mlx_destroy_image(data->mlx_ptr, data->img_collect);
-		mlx_destroy_image(data->mlx_ptr, data->img_player);
-		mlx_destroy_image(data->mlx_ptr, data->img_exit);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-		return (TRUE);
-	}
-	return (FALSE);
-}
-
 void	ft_render_sprite(t_data *data, void *image, int x, int y)
 {
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		image, x * 32, y * 32);
+		image, x * SPRITE_SIZE, y * SPRITE_SIZE);
 }
 
-int	ft_render(t_data *data)
+int	ft_render_map(t_data *data)
 {
 	int	i;
 	int	j;
@@ -60,5 +44,5 @@ int	ft_render(t_data *data)
 		}
 		++i;
 	}
-	return (TRUE);
+	return (0);
 }

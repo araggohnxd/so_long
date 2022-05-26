@@ -6,7 +6,8 @@ LIBFT_PATH = 			libraries/libft
 MINILIBX =				${MINILIBX_PATH}/libmlx.a
 MINILIBX_PATH =			libraries/minilibx
 
-SOURCES_FILES =			so_long.c map_validation.c render_map.c
+SOURCES_FILES =			so_long.c map_validation.c render_map.c controls.c \
+						player_movement.c
 OBJECTS_FILES =			${SOURCES_FILES:.c=.o}
 SOURCES_PATH =			sources
 OBJECTS_PATH =			objects
@@ -17,17 +18,17 @@ HEADER =				${SOURCES_PATH}/so_long.h
 
 REMOVE =				rm -rf
 CC =					cc -g3 -Wall -Wextra -Werror
-MLXFLAGS =				-lXext -lX11 -lmlx
+MLXFLAGS =				-lXext -lX11
 
 all:					${NAME}
 
-${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${HEADER} ${LIBFT} ${MINILIBX} Makefile
+${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${LIBFT} ${MINILIBX} Makefile
 						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -lm -o ${NAME}
 
 ${OBJECTS_PATH}:
 						mkdir $@
 
-${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c | ${OBJECTS_PATH}
+${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c ${HEADER} | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
 ${LIBFT}:
@@ -37,10 +38,13 @@ ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
 run:					all
-						./so_long maps/valid.ber
+						./so_long maps/minimal.ber
 
 vg:						all
-						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/valid.ber
+						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/minimal.ber
+
+test:					all
+						./tests/test.sh
 
 clean:
 						$(MAKE) -C $(LIBFT_PATH) clean

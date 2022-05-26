@@ -6,16 +6,15 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/25 07:28:00 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:30:44 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define HEIGHT 720
-# define WIDTH 1280
 # include <fcntl.h>
 # include <stdlib.h>
+# include <errno.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include "../libraries/libft/libft.h"
@@ -25,15 +24,9 @@
 # include <stdio.h>
 // TESTING PURPOSES
 
-# define BLACK "\033[0;30m"
 # define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
-# define BLUE "\033[0;34m"
-# define PURPLE "\033[0;35m"
-# define CYAN "\033[0;36m"
-# define WHITE "\033[0;37m"
 # define RESET "\033[0m"
+# define SPRITE_SIZE 32
 
 typedef struct s_data {
 	void	*mlx_ptr;
@@ -46,13 +39,18 @@ typedef struct s_data {
 	char	**map;
 	int		map_height;
 	int		map_width;
-	size_t	c_count;
-	size_t	p_count;
-	size_t	e_count;
+	int		c_count;
+	int		p_count;
+	int		e_count;
+	int		player_x;
+	int		player_y;
+	int		collected;
 }	t_data;
 
 int		ft_validate_map(t_data *data);
-int		ft_close_game(int keysym, t_data *data);
-int		ft_render(t_data *data);
+int		ft_render_map(t_data *data);
+int		ft_keypress_handler(int keysym, t_data *data);
+int		ft_close_game(t_data *data);
+void	ft_move_player(int keysym, t_data *data);
 
 #endif /* SO_LONG_H */

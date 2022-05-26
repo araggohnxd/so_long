@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/25 05:47:28 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:34:25 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	ft_init_images(t_data *data)
 
 static int	ft_init_game(t_data *data)
 {
+	data->map_height *= SPRITE_SIZE;
+	data->map_width *= SPRITE_SIZE;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (FALSE);
@@ -40,21 +42,11 @@ static int	ft_init_game(t_data *data)
 		return (FALSE);
 	}
 	ft_init_images(data);
-	mlx_loop_hook(data->mlx_ptr, ft_render, data);
-	mlx_key_hook(data->win_ptr, ft_close_game, data);
+	mlx_loop_hook(data->mlx_ptr, ft_render_map, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, ft_keypress_handler, data);
+	mlx_hook(data->win_ptr, DestroyNotify, NoEventMask, ft_close_game, data);
 	mlx_loop(data->mlx_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
 	return (TRUE);
-}
-
-static void	ft_init_data(t_data *data)
-{
-	data->map_height = 0;
-	data->map_width = 0;
-	data->c_count = 0;
-	data->p_count = 0;
-	data->e_count = 0;
 }
 
 static char	**ft_get_map(char *map)
@@ -74,6 +66,11 @@ static char	**ft_get_map(char *map)
 		if (!line)
 			break ;
 		join = ft_strjoin_free(join, line);
+		if (*(ft_strrchr(join, '\n') - 1) == '\n')
+		{
+			free(join);
+			return (NULL);
+		}
 	}
 	split = ft_split(join, '\n');
 	free(join);
@@ -88,19 +85,17 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		if (argc > 2)
-			ft_printf(RED"[ERROR] Too many arguments.\n"RESET);
+			ft_printf(RED"Error\nToo many arguments.\n"RESET);
 		else if (argc < 2)
-			ft_printf(RED"[ERROR] Map missing.\n"RESET);
+			ft_printf(RED"Error\nMap missing.\n"RESET);
 		return (1);
 	}
 	data.map = ft_get_map(argv[1]);
-	ft_init_data(&data);
 	if (!ft_validate_map(&data))
 	{
-		ft_printf(RED"[ERROR] Invalid map.\n"RESET);
+		ft_printf(RED"Error\nInvalid map.\n"RESET);
 		return (1);
 	}
 	ft_init_game(&data);
-	ft_free_split(data.map);
 	return (0);
 }
