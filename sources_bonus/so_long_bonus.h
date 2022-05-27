@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:10:06 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:10:29 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include <fcntl.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
@@ -70,4 +70,4 @@ int		ft_close_game(t_data *data);
 void	ft_move_player(int keysym, t_data *data);
 int		ft_end_game(t_data *data);
 
-#endif /* SO_LONG_H */
+#endif /* SO_LONG_BONUS_H */

@@ -1,4 +1,5 @@
 NAME =					so_long
+NAME_BONUS =			${NAME}_bonus
 
 LIBFT = 				${LIBFT_PATH}/libft.a
 LIBFT_PATH = 			libraries/libft
@@ -16,19 +17,39 @@ SOURCES =				$(addprefix ${SOURCES_PATH}/, ${SOURCES_FILES})
 OBJECTS =				$(addprefix ${OBJECTS_PATH}/, ${OBJECTS_FILES})
 HEADER =				${SOURCES_PATH}/so_long.h
 
+SOURCES_FILES_BONUS =	so_long_bonus.c map_validation_bonus.c \
+						render_map_bonus.c controls_bonus.c \
+						player_movement_bonus.c
+OBJECTS_FILES_BONUS =	${SOURCES_FILES_BONUS:.c=.o}
+SOURCES_PATH_BONUS =	${SOURCES_PATH}_bonus
+
+SOURCES_BONUS =			$(addprefix ${SOURCES_PATH_BONUS}/, ${SOURCES_FILES_BONUS})
+OBJECTS_BONUS =			$(addprefix ${OBJECTS_PATH}/, ${OBJECTS_FILES_BONUS})
+HEADER_BONUS =			${SOURCES_PATH_BONUS}/so_long_bonus.h
+
 REMOVE =				rm -rf
 CC =					cc -g3 -Wall -Wextra -Werror
 MLXFLAGS =				-lXext -lX11
 
 all:					${NAME}
 
+bonus:					${NAME_BONUS}
+
 ${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${LIBFT} ${MINILIBX} Makefile
-						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} -lm -o ${NAME}
+						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} \
+						-o ${NAME}
+
+${NAME_BONUS}:			${OBJECTS_PATH} ${OBJECTS_BONUS} ${LIBFT} ${MINILIBX} Makefile
+						${CC} ${OBJECTS_BONUS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} \
+						-o ${NAME_BONUS}
 
 ${OBJECTS_PATH}:
-						mkdir $@
+						mkdir -p $@
 
 ${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c ${HEADER} | ${OBJECTS_PATH}
+						${CC} -c $< -o $@
+
+${OBJECTS_PATH}/%.o:	${SOURCES_PATH_BONUS}/%.c ${HEADER} | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
 ${LIBFT}:
@@ -38,10 +59,11 @@ ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
 run:					all
-						./so_long maps/minimal.ber
+						./so_long_bonus maps/minimal.ber
 
 vg:						all
-						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/minimal.ber
+						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
+						./so_long_bonus maps/minimal.ber
 
 test:					all
 						./tests/test.sh
@@ -53,7 +75,7 @@ clean:
 
 fclean:					clean
 						$(MAKE) -C $(LIBFT_PATH) fclean
-						${REMOVE} ${NAME}
+						${REMOVE} ${NAME} ${NAME_BONUS}
 
 re:						fclean all
 
