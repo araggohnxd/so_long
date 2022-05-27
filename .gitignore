@@ -70,3 +70,4 @@ dkms.conf
 so_long
 test.sh
 tests/
+vgcore*
