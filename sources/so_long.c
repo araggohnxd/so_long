@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 00:40:38 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:34:07 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void	ft_init_images(t_data *data)
 {
-	data->img_floor = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/0.xpm",
+	data->img_floor = mlx_xpm_file_to_image(data->mlx_ptr, FLOOR_XPM,
 			&data->map_width, &data->map_height);
-	data->img_wall = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/1.xpm",
+	data->img_wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_XPM,
 			&data->map_width, &data->map_height);
-	data->img_collect = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/C.xpm",
+	data->img_collect = mlx_xpm_file_to_image(data->mlx_ptr, COLLECT_XPM,
 			&data->map_width, &data->map_height);
-	data->img_player = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/P.xpm",
+	data->img_player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_XPM,
 			&data->map_width, &data->map_height);
-	data->img_exit = mlx_xpm_file_to_image(data->mlx_ptr, "./sprites/E.xpm",
+	data->img_exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_XPM,
 			&data->map_width, &data->map_height);
 }
 
@@ -85,17 +85,17 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		if (argc > 2)
-			ft_putstr_fd(RED"Error\nToo many arguments.\n"RESET, 2);
+			ft_putstr_fd(RED ERROR MANYARG RESET, STDERR);
 		else if (argc < 2)
-			ft_putstr_fd(RED"Error\nMap missing.\n"RESET, 2);
-		return (1);
+			ft_putstr_fd(RED ERROR MISSMAP RESET, STDERR);
+		return (MLX_ERROR);
 	}
 	data.map = ft_get_map(argv[1]);
 	if (!ft_validate_map(&data))
 	{
-		ft_putstr_fd(RED"Error\nInvalid map.\n"RESET, 2);
-		return (1);
+		ft_putstr_fd(RED ERROR BADMAP RESET, STDERR);
+		return (MLX_ERROR);
 	}
 	ft_init_game(&data);
-	return (0);
+	return (MLX_SUCCESS);
 }

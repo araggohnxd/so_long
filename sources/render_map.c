@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/26 22:35:17 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 18:51:41 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_render_map(t_data *data)
 	int	j;
 
 	if (!data->win_ptr)
-		return (FALSE);
+		return (MLX_ERROR);
 	i = 0;
 	while (data->map[i])
 	{
@@ -44,5 +44,5 @@ int	ft_render_map(t_data *data)
 		}
 		++i;
 	}
-	return (0);
+	return (MLX_SUCCESS);
 }

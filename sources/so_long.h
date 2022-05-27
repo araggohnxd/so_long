@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 01:33:41 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:35:44 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,31 @@
 # include "../libraries/minilibx/mlx.h"
 
 // TESTING PURPOSES
-# include <stdio.h>
+#include <stdio.h>
 // TESTING PURPOSES
 
+// Text formatting
 # define CYAN "\033[0;36m"
 # define RED "\033[0;31m"
 # define RESET "\033[0m"
 # define CLEAR "\e[1;1H\e[2J"
+# define ERROR "Error\n"
+# define MISSMAP "Map missing.\n"
+# define MANYARG "Too many arguments.\n"
+# define BADMAP "Invalid map.\n"
+
+// Error handling
+# define MLX_SUCCESS 0
+# define MLX_ERROR 1
+# define STDERR 2
+
+// Sprites
 # define SPRITE_SIZE 32
+# define FLOOR_XPM "./sprites/0.xpm"
+# define WALL_XPM "./sprites/1.xpm"
+# define COLLECT_XPM "./sprites/C.xpm"
+# define PLAYER_XPM "./sprites/P.xpm"
+# define EXIT_XPM "./sprites/E.xpm"
 
 typedef struct s_data {
 	void	*mlx_ptr;
