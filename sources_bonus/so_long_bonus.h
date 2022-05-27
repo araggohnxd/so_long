@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 23:12:28 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:31:49 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define MISSMAP "Map missing.\n"
 # define MANYARG "Too many arguments.\n"
 # define BADMAP "Invalid map.\n"
+# define PLAYER_CHARS "PWASD"
+# define ALLOWED_CHARS "01CPE"
 
 // Error handling
 # define MLX_SUCCESS 0

@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 12:06:11 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:14:33 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:31:20 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,10 @@ static int	ft_validate_lines(t_data *data)
 {
 	size_t	first_len;
 	size_t	line_len;
-	char	*chars;
 	int		i;
 	int		j;
 
 	i = 0;
-	chars = "01CPE";
 	first_len = ft_strlen(data->map[i]);
 	data->map_width = first_len;
 	while (i < data->map_height)
@@ -76,7 +74,8 @@ static int	ft_validate_lines(t_data *data)
 		j = 0;
 		line_len = ft_strlen(data->map[i]);
 		while (data->map[i][j])
-			if (line_len != first_len || !ft_strchr(chars, data->map[i][j++]))
+			if (line_len != first_len
+				|| !ft_strchr(ALLOWED_CHARS, data->map[i][j++]))
 				return (FALSE);
 		++i;
 	}
