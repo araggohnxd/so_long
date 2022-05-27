@@ -35,21 +35,21 @@ all:					${NAME}
 
 bonus:					${NAME_BONUS}
 
-${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${LIBFT} ${MINILIBX} Makefile
+${NAME}:				${OBJECTS_PATH} ${OBJECTS} ${LIBFT} ${MINILIBX}
 						${CC} ${OBJECTS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} \
 						-o ${NAME}
 
-${NAME_BONUS}:			${OBJECTS_PATH} ${OBJECTS_BONUS} ${LIBFT} ${MINILIBX} Makefile
+${NAME_BONUS}:			${OBJECTS_PATH} ${OBJECTS_BONUS} ${LIBFT} ${MINILIBX}
 						${CC} ${OBJECTS_BONUS} ${LIBFT} ${MINILIBX} ${MLXFLAGS} \
 						-o ${NAME_BONUS}
 
 ${OBJECTS_PATH}:
 						mkdir -p $@
 
-${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c ${HEADER} | ${OBJECTS_PATH}
+${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c ${HEADER} Makefile | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
-${OBJECTS_PATH}/%.o:	${SOURCES_PATH_BONUS}/%.c ${HEADER_BONUS} | ${OBJECTS_PATH}
+${OBJECTS_PATH}/%.o:	${SOURCES_PATH_BONUS}/%.c ${HEADER_BONUS} Makefile | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
 ${LIBFT}:
@@ -58,10 +58,10 @@ ${LIBFT}:
 ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
-run:					all
+run:					bonus
 						./so_long_bonus maps/minimal.ber
 
-vg:						all
+vg:						bonus
 						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
 						./so_long_bonus maps/minimal.ber
 
