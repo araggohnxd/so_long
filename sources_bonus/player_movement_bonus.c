@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 00:17:30 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:49:43 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int	ft_move_player_up(t_data *data)
 		return (FALSE);
 	else if (data->map[data->player_y - 1][data->player_x] == 'C')
 		data->collected++;
-	else if (data->map[data->player_y - 1][data->player_x] == 'E')
+	else if (data->map[data->player_y - 1][data->player_x] == 'E'
+		|| data->map[data->player_y - 1][data->player_x] == 'O')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[--(data->player_y)][data->player_x] = 'W';
@@ -31,7 +32,8 @@ static int	ft_move_player_left(t_data *data)
 		return (FALSE);
 	else if (data->map[data->player_y][data->player_x - 1] == 'C')
 		data->collected++;
-	else if (data->map[data->player_y][data->player_x - 1] == 'E')
+	else if (data->map[data->player_y][data->player_x - 1] == 'E'
+		|| data->map[data->player_y][data->player_x - 1] == 'O')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[data->player_y][--(data->player_x)] = 'A';
@@ -44,7 +46,8 @@ static int	ft_move_player_down(t_data *data)
 		return (FALSE);
 	else if (data->map[data->player_y + 1][data->player_x] == 'C')
 		data->collected++;
-	else if (data->map[data->player_y + 1][data->player_x] == 'E')
+	else if (data->map[data->player_y + 1][data->player_x] == 'E'
+		|| data->map[data->player_y + 1][data->player_x] == 'O')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[++(data->player_y)][data->player_x] = 'S';
@@ -57,7 +60,8 @@ static int	ft_move_player_right(t_data *data)
 		return (FALSE);
 	else if (data->map[data->player_y][data->player_x + 1] == 'C')
 		data->collected++;
-	else if (data->map[data->player_y][data->player_x + 1] == 'E')
+	else if (data->map[data->player_y][data->player_x + 1] == 'E'
+		|| data->map[data->player_y][data->player_x + 1] == 'O')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[data->player_y][++(data->player_x)] = 'D';
