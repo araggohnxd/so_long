@@ -19,7 +19,7 @@ HEADER =				${SOURCES_PATH}/so_long.h
 
 SOURCES_FILES_BONUS =	so_long_bonus.c map_validation_bonus.c \
 						render_map_bonus.c controls_bonus.c \
-						player_movement_bonus.c
+						player_movement_bonus.c init_images_bonus.c
 OBJECTS_FILES_BONUS =	${SOURCES_FILES_BONUS:.c=.o}
 SOURCES_PATH_BONUS =	${SOURCES_PATH}_bonus
 
@@ -49,7 +49,7 @@ ${OBJECTS_PATH}:
 ${OBJECTS_PATH}/%.o:	${SOURCES_PATH}/%.c ${HEADER} | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
-${OBJECTS_PATH}/%.o:	${SOURCES_PATH_BONUS}/%.c ${HEADER} | ${OBJECTS_PATH}
+${OBJECTS_PATH}/%.o:	${SOURCES_PATH_BONUS}/%.c ${HEADER_BONUS} | ${OBJECTS_PATH}
 						${CC} -c $< -o $@
 
 ${LIBFT}:
