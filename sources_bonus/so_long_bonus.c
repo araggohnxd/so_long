@@ -6,25 +6,11 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:14:41 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:56:19 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-static void	ft_init_images(t_data *data)
-{
-	data->img_floor = mlx_xpm_file_to_image(data->mlx_ptr, FLOOR_XPM,
-			&data->map_width, &data->map_height);
-	data->img_wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_XPM,
-			&data->map_width, &data->map_height);
-	data->img_collect = mlx_xpm_file_to_image(data->mlx_ptr, COLLECT_XPM,
-			&data->map_width, &data->map_height);
-	data->img_player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_XPM,
-			&data->map_width, &data->map_height);
-	data->img_exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_XPM,
-			&data->map_width, &data->map_height);
-}
 
 static int	ft_init_game(t_data *data)
 {

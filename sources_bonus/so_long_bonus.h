@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:10:29 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 23:12:28 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,37 @@
 # define FLOOR_XPM "./sprites/0.xpm"
 # define WALL_XPM "./sprites/1.xpm"
 # define COLLECT_XPM "./sprites/C.xpm"
-# define PLAYER_XPM "./sprites/P.xpm"
-# define EXIT_XPM "./sprites/E.xpm"
+# define PLAYER_W_XPM "./sprites/P_W.xpm"
+# define PLAYER_A_XPM "./sprites/P_A.xpm"
+# define PLAYER_S_XPM "./sprites/P_S.xpm"
+# define PLAYER_D_XPM "./sprites/P_D.xpm"
+# define CLOSE_XPM "./sprites/E_CLOSE.xpm"
+# define OPEN_XPM "./sprites/E_OPEN.xpm"
+# define ENEMY_1A_XPM "./sprites/X_1_A.xpm"
+# define ENEMY_2A_XPM "./sprites/X_2_A.xpm"
+# define ENEMY_1D_XPM "./sprites/X_1_D.xpm"
+# define ENEMY_2D_XPM "./sprites/X_2_D.xpm"
+
+typedef struct s_img {
+	void	*floor;
+	void	*wall;
+	void	*collect;
+	void	*player_w;
+	void	*player_a;
+	void	*player_s;
+	void	*player_d;
+	void	*exit_close;
+	void	*exit_open;
+	void	*enemy_1a;
+	void	*enemy_2a;
+	void	*enemy_1d;
+	void	*enemy_2d;
+}	t_img;
 
 typedef struct s_data {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_floor;
-	void	*img_wall;
-	void	*img_collect;
-	void	*img_player;
-	void	*img_exit;
+	t_img	image;
 	char	**map;
 	int		map_height;
 	int		map_width;
@@ -69,5 +89,6 @@ int		ft_keypress_handler(int keysym, t_data *data);
 int		ft_close_game(t_data *data);
 void	ft_move_player(int keysym, t_data *data);
 int		ft_end_game(t_data *data);
+void	ft_init_images(t_data *data);
 
 #endif /* SO_LONG_BONUS_H */

@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:14:35 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 00:17:30 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_move_player_up(t_data *data)
 	else if (data->map[data->player_y - 1][data->player_x] == 'E')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
-	data->map[--(data->player_y)][data->player_x] = 'P';
+	data->map[--(data->player_y)][data->player_x] = 'W';
 	return (TRUE);
 }
 
@@ -34,7 +34,7 @@ static int	ft_move_player_left(t_data *data)
 	else if (data->map[data->player_y][data->player_x - 1] == 'E')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
-	data->map[data->player_y][--(data->player_x)] = 'P';
+	data->map[data->player_y][--(data->player_x)] = 'A';
 	return (TRUE);
 }
 
@@ -47,7 +47,7 @@ static int	ft_move_player_down(t_data *data)
 	else if (data->map[data->player_y + 1][data->player_x] == 'E')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
-	data->map[++(data->player_y)][data->player_x] = 'P';
+	data->map[++(data->player_y)][data->player_x] = 'S';
 	return (TRUE);
 }
 
@@ -60,7 +60,7 @@ static int	ft_move_player_right(t_data *data)
 	else if (data->map[data->player_y][data->player_x + 1] == 'E')
 		return (ft_end_game(data));
 	data->map[data->player_y][data->player_x] = '0';
-	data->map[data->player_y][++(data->player_x)] = 'P';
+	data->map[data->player_y][++(data->player_x)] = 'D';
 	return (TRUE);
 }
 
