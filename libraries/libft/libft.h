@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:43:19 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/14 19:25:24 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/27 18:47:55 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,16 @@
 # define MAX_FD_VALUE 1024
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
-
-enum e_bool {
-	FALSE,
-	TRUE
-};
-
-enum e_types {
-	INT = 2,
-	CHAR,
-	STR,
-	PTR,
-	UINT,
-	HEX_L,
-	HEX_U,
-	PERCENT
-};
+# define FALSE 0
+# define TRUE 1
+# define INT 2
+# define CHAR 3
+# define STR 4
+# define PTR 5
+# define UINT 6
+# define HEX_L 7
+# define HEX_U 8
+# define PERCENT 9
 
 // type definitions
 typedef unsigned int		t_uint;
