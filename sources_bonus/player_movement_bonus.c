@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 01:41:43 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:35:33 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	ft_move_player_up(t_data *data)
 		data->collected++;
 	else if (c == 'E' || c == 'O')
 		return (ft_end_game(data));
+	else if (c == 'V' || c == 'H')
+		return (ft_kill_player(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[--(data->player_y)][data->player_x] = 'W';
 	return (TRUE);
@@ -39,6 +41,8 @@ static int	ft_move_player_left(t_data *data)
 		data->collected++;
 	else if (c == 'E' || c == 'O')
 		return (ft_end_game(data));
+	else if (c == 'V' || c == 'H')
+		return (ft_kill_player(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[data->player_y][--(data->player_x)] = 'A';
 	return (TRUE);
@@ -55,6 +59,8 @@ static int	ft_move_player_down(t_data *data)
 		data->collected++;
 	else if (c == 'E' || c == 'O')
 		return (ft_end_game(data));
+	else if (c == 'V' || c == 'H')
+		return (ft_kill_player(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[++(data->player_y)][data->player_x] = 'S';
 	return (TRUE);
@@ -71,6 +77,8 @@ static int	ft_move_player_right(t_data *data)
 		data->collected++;
 	else if (c == 'E' || c == 'O')
 		return (ft_end_game(data));
+	else if (c == 'V' || c == 'H')
+		return (ft_kill_player(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->map[data->player_y][++(data->player_x)] = 'D';
 	return (TRUE);

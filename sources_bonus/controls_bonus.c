@@ -6,11 +6,18 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 23:27:24 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:37:56 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+int	ft_kill_player(t_data *data)
+{
+	data->map[data->player_y][data->player_x] = 'R';
+	data->end_game = 1;
+	return (TRUE);
+}
 
 int	ft_end_game(t_data *data)
 {
@@ -38,6 +45,7 @@ int	ft_close_game(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->image.enemy_2a);
 	mlx_destroy_image(data->mlx_ptr, data->image.enemy_1d);
 	mlx_destroy_image(data->mlx_ptr, data->image.enemy_2d);
+	mlx_destroy_image(data->mlx_ptr, data->image.rip);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	data->win_ptr = NULL;
 	mlx_destroy_display(data->mlx_ptr);

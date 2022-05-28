@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 01:14:37 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/28 02:37:21 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define BADMAP "Invalid map.\n"
 # define ALLOWED_CHARS "01CPEVH"
 # define PLAYER_CHARS "PWASD"
-# define SCENARIO_CHARS "01CEO"
+# define SCENARIO_CHARS "01CEOR"
 # define ENEMY_CHARS "VH"
 
 // Error handling
@@ -53,6 +53,7 @@
 # define ENEMY_2A_XPM "./sprites/X_2_A.xpm"
 # define ENEMY_1D_XPM "./sprites/X_1_D.xpm"
 # define ENEMY_2D_XPM "./sprites/X_2_D.xpm"
+# define RIP_XPM "./sprites/RIP.xpm"
 
 typedef struct s_img {
 	void	*floor;
@@ -68,6 +69,7 @@ typedef struct s_img {
 	void	*enemy_2a;
 	void	*enemy_1d;
 	void	*enemy_2d;
+	void	*rip;
 }	t_img;
 
 typedef struct s_data {
@@ -94,5 +96,6 @@ int		ft_close_game(t_data *data);
 void	ft_move_player(int keysym, t_data *data);
 int		ft_end_game(t_data *data);
 void	ft_init_images(t_data *data);
+int		ft_kill_player(t_data *data);
 
 #endif /* SO_LONG_BONUS_H */
