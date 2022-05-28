@@ -59,11 +59,11 @@ ${MINILIBX}:
 						${MAKE} -C ${MINILIBX_PATH}
 
 run:					bonus
-						./so_long_bonus maps/minimal.ber
+						./so_long_bonus maps/monsters.ber
 
 vg:						bonus
 						valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
-						./so_long_bonus maps/minimal.ber
+						./so_long_bonus maps/monsters.ber
 
 test:					all
 						./tests/test.sh
