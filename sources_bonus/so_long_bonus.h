@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:37:21 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/29 01:55:25 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		ft_validate_map(t_data *data);
 int		ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);
 int		ft_close_game(t_data *data);
-void	ft_move_player(int keysym, t_data *data);
+void	ft_player_movement(int keysym, t_data *data);
 int		ft_end_game(t_data *data);
 void	ft_init_images(t_data *data);
 int		ft_kill_player(t_data *data);

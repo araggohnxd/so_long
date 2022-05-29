@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:37:56 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/29 01:55:59 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int	ft_keypress_handler(int keysym, t_data *data)
 		||keysym == XK_Left || keysym == XK_a
 		|| keysym == XK_Down || keysym == XK_s
 		|| keysym == XK_Right || keysym == XK_d)
-		ft_move_player(keysym, data);
+		ft_player_movement(keysym, data);
 	return (MLX_SUCCESS);
 }
