@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/29 02:02:42 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/29 02:12:07 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ static void	ft_move_player(char key, t_data *data)
 static int	ft_check_mov(char key, t_data *data, char *c)
 {
 	if (*c == '1')
+	{
+		data->map[data->player_y][data->player_x] = key;
 		return (FALSE);
+	}
 	else if (*c == 'C')
 		data->collected++;
 	else if (*c == 'E' || *c == 'O')
-		return (ft_end_game(data));
+		return (ft_end_game(data, key));
 	else if (*c == 'V' || *c == 'H')
 		return (ft_kill_player(data));
 	ft_move_player(key, data);

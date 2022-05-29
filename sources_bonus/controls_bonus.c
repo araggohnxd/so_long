@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/29 01:55:59 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/29 02:11:49 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_kill_player(t_data *data)
 	return (TRUE);
 }
 
-int	ft_end_game(t_data *data)
+int	ft_end_game(t_data *data, char key)
 {
 	if (data->collected == data->c_count)
 	{
@@ -27,6 +27,7 @@ int	ft_end_game(t_data *data)
 		data->end_game = 1;
 		return (TRUE);
 	}
+	data->map[data->player_y][data->player_x] = key;
 	return (FALSE);
 }
 
