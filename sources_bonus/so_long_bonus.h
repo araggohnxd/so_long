@@ -12,12 +12,12 @@
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
+# include "../libraries/libft/libft.h"
+# include "../libraries/minilibx/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "../libraries/libft/libft.h"
-# include "../libraries/minilibx/mlx.h"
 
 // Text formatting
 # define CYAN "\033[0;36m"
