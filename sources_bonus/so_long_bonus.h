@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 12:39:55 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:21:38 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # define ALLOWED_CHARS "01CPEVH"
 # define PLAYER_CHARS "PWASD"
 # define SCENARIO_CHARS "01CEOR"
-# define ENEMY_CHARS "VH"
+# define ENEMY_CHARS "VFHJ"
+# define ENEMY_CHARS_L "vfhj"
 
 // Error handling
 # define MLX_SUCCESS 0
@@ -88,14 +89,17 @@ typedef struct s_data {
 	int		collected;
 	int		moves;
 	int		end_game;
+	int		loop_tick;
 }	t_data;
 
 void	ft_check_errors(int argc, char *argv[]);
 int		ft_validate_map(t_data *data);
-int		ft_render_map(t_data *data);
+void	ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);
 int		ft_close_game(t_data *data);
+int		ft_move_entity(char *from, char *to, char old_char, char new_char);
 void	ft_player_movement(int keysym, t_data *data);
+void	ft_enemy_movement(t_data *data);
 int		ft_end_game(t_data *data, char key);
 void	ft_init_images(t_data *data);
 int		ft_kill_player(t_data *data);

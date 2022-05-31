@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/29 02:12:07 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:59:48 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_check_mov(char key, t_data *data, char *c)
 		data->collected++;
 	else if (*c == 'E' || *c == 'O')
 		return (ft_end_game(data, key));
-	else if (*c == 'V' || *c == 'H')
+	else if (ft_strchr(ENEMY_CHARS, *c))
 		return (ft_kill_player(data));
 	ft_move_player(key, data);
 	return (TRUE);

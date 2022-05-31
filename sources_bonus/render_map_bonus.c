@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:39:54 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:44:14 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,17 @@ static void	ft_render_enemy(t_data *data, char key, int x, int y)
 		ft_render_sprite(data, data->image.enemy_1a, x, y);
 	else if (key == 'H' && x % 2 != 0)
 		ft_render_sprite(data, data->image.enemy_2a, x, y);
-	else if (key == 'V' && y % 2 == 0)
+	else if (key == 'J' && x % 2 != 0)
 		ft_render_sprite(data, data->image.enemy_1d, x, y);
+	else if (key == 'J' && x % 2 == 0)
+		ft_render_sprite(data, data->image.enemy_2d, x, y);
+	else if (key == 'F' && y % 2 == 0)
+		ft_render_sprite(data, data->image.enemy_1a, x, y);
+	else if (key == 'F' && y % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_2a, x, y);
 	else if (key == 'V' && y % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_1d, x, y);
+	else if (key == 'V' && y % 2 == 0)
 		ft_render_sprite(data, data->image.enemy_2d, x, y);
 }
 
@@ -66,7 +74,7 @@ static void	ft_render_scenario(t_data *data, char key, int x, int y)
 		ft_render_sprite(data, data->image.rip, x, y);
 }
 
-int	ft_render_map(t_data *data)
+void	ft_render_map(t_data *data)
 {
 	int		i;
 	int		j;
@@ -88,5 +96,4 @@ int	ft_render_map(t_data *data)
 		}
 		++i;
 	}
-	return (MLX_SUCCESS);
 }

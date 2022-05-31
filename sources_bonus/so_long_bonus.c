@@ -6,11 +6,19 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 12:39:44 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:59:28 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+static int	ft_loop_hook(t_data *data)
+{
+	ft_render_map(data);
+	ft_enemy_movement(data);
+	++(data->loop_tick);
+	return (0);
+}
 
 static int	ft_init_game(t_data *data)
 {
@@ -28,7 +36,7 @@ static int	ft_init_game(t_data *data)
 		return (FALSE);
 	}
 	ft_init_images(data);
-	mlx_loop_hook(data->mlx_ptr, ft_render_map, data);
+	mlx_loop_hook(data->mlx_ptr, ft_loop_hook, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, ft_keypress_handler, data);
 	mlx_hook(data->win_ptr, DestroyNotify, NoEventMask, ft_close_game, data);
 	mlx_loop(data->mlx_ptr);

@@ -6,11 +6,18 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/29 02:11:49 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:15:22 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+int	ft_move_entity(char *from, char *to, char old_char, char new_char)
+{
+	*from = old_char;
+	*to = new_char;
+	return (TRUE);
+}
 
 int	ft_kill_player(t_data *data)
 {
