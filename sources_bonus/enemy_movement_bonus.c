@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:45:58 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 15:58:56 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:50:43 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,8 @@ void	ft_enemy_movement(t_data *data)
 	int		j;
 	char	*c;
 
-	if (data->loop_tick < 10)
-	{
-		++(data->loop_tick);
+	if (++(data->loop_tick) < 10 || data->end_game)
 		return ;
-	}
 	data->loop_tick = 0;
 	i = 0;
 	while (data->map[i])
