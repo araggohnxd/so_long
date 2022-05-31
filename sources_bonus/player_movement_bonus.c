@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 15:59:48 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 20:45:28 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 
 static void	ft_move_player(char key, t_data *data)
 {
-	data->map[data->player_y][data->player_x] = '0';
+	char	*from;
+
+	from = &data->map[data->player_y][data->player_x];
 	if (key == 'W')
-		data->map[--(data->player_y)][data->player_x] = 'W';
+		ft_move_entity(
+			from, &data->map[--(data->player_y)][data->player_x], '0', key);
 	else if (key == 'A')
-		data->map[data->player_y][--(data->player_x)] = 'A';
+		ft_move_entity(
+			from, &data->map[data->player_y][--(data->player_x)], '0', key);
 	else if (key == 'S')
-		data->map[++(data->player_y)][data->player_x] = 'S';
+		ft_move_entity(
+			from, &data->map[++(data->player_y)][data->player_x], '0', key);
 	else if (key == 'D')
-		data->map[data->player_y][++(data->player_x)] = 'D';
+		ft_move_entity(
+			from, &data->map[data->player_y][++(data->player_x)], '0', key);
 }
 
-static int	ft_check_mov(char key, t_data *data, char *c)
+static int	ft_check_mov(char key, t_data *data, char *pos)
 {
-	if (*c == '1')
+	if (*pos == '1')
 	{
 		data->map[data->player_y][data->player_x] = key;
 		return (FALSE);
 	}
-	else if (*c == 'C')
+	else if (*pos == 'C')
 		data->collected++;
-	else if (*c == 'E' || *c == 'O')
+	else if (*pos == 'E' || *pos == 'O')
 		return (ft_end_game(data, key));
-	else if (ft_strchr(ENEMY_CHARS, *c))
+	else if (ft_strchr(ENEMY_CHARS, *pos))
 		return (ft_kill_player(data));
 	ft_move_player(key, data);
 	return (TRUE);
