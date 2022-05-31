@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/29 02:11:33 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 12:39:55 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define MISSMAP "Map missing.\n"
 # define MANYARG "Too many arguments.\n"
 # define BADMAP "Invalid map.\n"
+# define BADEXT "Invalid map file extension.\n"
 # define ALLOWED_CHARS "01CPEVH"
 # define PLAYER_CHARS "PWASD"
 # define SCENARIO_CHARS "01CEOR"
@@ -89,6 +90,7 @@ typedef struct s_data {
 	int		end_game;
 }	t_data;
 
+void	ft_check_errors(int argc, char *argv[]);
 int		ft_validate_map(t_data *data);
 int		ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);

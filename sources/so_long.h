@@ -6,18 +6,18 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 22:10:06 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 12:54:58 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# include "../libraries/libft/libft.h"
+# include "../libraries/minilibx/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "../libraries/libft/libft.h"
-# include "../libraries/minilibx/mlx.h"
 
 // Text formatting
 # define CYAN "\033[0;36m"
@@ -28,6 +28,7 @@
 # define MISSMAP "Map missing.\n"
 # define MANYARG "Too many arguments.\n"
 # define BADMAP "Invalid map.\n"
+# define BADEXT "Invalid map file extension.\n"
 
 // Error handling
 # define MLX_SUCCESS 0
@@ -63,6 +64,7 @@ typedef struct s_data {
 	int		end_game;
 }	t_data;
 
+void	ft_check_errors(int argc, char *argv[]);
 int		ft_validate_map(t_data *data);
 int		ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);

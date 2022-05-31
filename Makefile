@@ -8,7 +8,7 @@ MINILIBX =				${MINILIBX_PATH}/libmlx.a
 MINILIBX_PATH =			libraries/minilibx
 
 SOURCES_FILES =			so_long.c map_validation.c render_map.c controls.c \
-						player_movement.c
+						player_movement.c check_errors.c
 OBJECTS_FILES =			${SOURCES_FILES:.c=.o}
 SOURCES_PATH =			sources
 OBJECTS_PATH =			objects
@@ -19,7 +19,8 @@ HEADER =				${SOURCES_PATH}/so_long.h
 
 SOURCES_FILES_BONUS =	so_long_bonus.c map_validation_bonus.c \
 						render_map_bonus.c controls_bonus.c \
-						player_movement_bonus.c init_images_bonus.c
+						player_movement_bonus.c init_images_bonus.c \
+						check_errors_bonus.c
 OBJECTS_FILES_BONUS =	${SOURCES_FILES_BONUS:.c=.o}
 SOURCES_PATH_BONUS =	${SOURCES_PATH}_bonus
 

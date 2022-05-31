@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/27 19:34:07 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 12:55:31 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,7 @@ int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	if (argc != 2)
-	{
-		if (argc > 2)
-			ft_putstr_fd(RED ERROR MANYARG RESET, STDERR);
-		else if (argc < 2)
-			ft_putstr_fd(RED ERROR MISSMAP RESET, STDERR);
-		return (MLX_ERROR);
-	}
+	ft_check_errors(argc, argv);
 	data.map = ft_get_map(argv[1]);
 	if (!ft_validate_map(&data))
 	{
