@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 15:15:22 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 02:08:23 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	ft_close_game(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->image.enemy_1d);
 	mlx_destroy_image(data->mlx_ptr, data->image.enemy_2d);
 	mlx_destroy_image(data->mlx_ptr, data->image.rip);
+	mlx_destroy_image(data->mlx_ptr, data->image.counter);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	data->win_ptr = NULL;
 	mlx_destroy_display(data->mlx_ptr);
