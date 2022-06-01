@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:06:43 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 02:08:23 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:42:24 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_kill_player(t_data *data)
 {
 	data->map[data->player_y][data->player_x] = 'R';
 	data->end_game = 1;
+	data->dead_player = 1;
 	return (TRUE);
 }
 

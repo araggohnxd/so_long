@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 21:18:08 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:42:35 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ typedef struct s_data {
 	int		collected;
 	int		moves;
 	int		end_game;
+	int		dead_player;
 	int		loop_tick;
+	int		player_moved;
 }	t_data;
 
 void	ft_check_errors(int argc, char *argv[]);
@@ -106,5 +108,6 @@ int		ft_end_game(t_data *data, char key);
 void	ft_init_images(t_data *data);
 int		ft_kill_player(t_data *data);
 void	ft_moves_counter(t_data *data);
+void	ft_render_sprite(t_data *data, void *image, int x, int y);
 
 #endif /* SO_LONG_BONUS_H */

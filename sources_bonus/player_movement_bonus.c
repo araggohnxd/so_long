@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 21:32:16 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:51:02 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,19 @@ static int	ft_check_mov(char key, t_data *data, char *pos)
 
 void	ft_player_movement(int keysym, t_data *data)
 {
-	int	player_moved;
-
-	player_moved = 0;
+	data->player_moved = 0;
 	if (keysym == XK_Up || keysym == XK_w)
-		player_moved = ft_check_mov(
+		data->player_moved = ft_check_mov(
 				'W', data, &data->map[data->player_y - 1][data->player_x]);
 	else if (keysym == XK_Left || keysym == XK_a)
-		player_moved = ft_check_mov(
+		data->player_moved = ft_check_mov(
 				'A', data, &data->map[data->player_y][data->player_x - 1]);
 	else if (keysym == XK_Down || keysym == XK_s)
-		player_moved = ft_check_mov(
+		data->player_moved = ft_check_mov(
 				'S', data, &data->map[data->player_y + 1][data->player_x]);
 	else if (keysym == XK_Right || keysym == XK_d)
-		player_moved = ft_check_mov(
+		data->player_moved = ft_check_mov(
 				'D', data, &data->map[data->player_y][data->player_x + 1]);
-	if (player_moved)
+	if (data->player_moved)
 		++(data->moves);
 }

@@ -6,13 +6,13 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 21:42:37 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:54:57 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	ft_render_sprite(t_data *data, void *image, int x, int y)
+void	ft_render_sprite(t_data *data, void *image, int x, int y)
 {
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		image, x * SPRITE_SIZE, y * SPRITE_SIZE);
@@ -66,8 +66,6 @@ static void	ft_render_scenario(t_data *data, char *key, int x, int y)
 		ft_render_sprite(data, data->image.collect, x, y);
 	else if (*key == 'R')
 		ft_render_sprite(data, data->image.rip, x, y);
-	else if (*key == 'M')
-		ft_render_sprite(data, data->image.counter, x, y);
 }
 
 void	ft_render_map(t_data *data)

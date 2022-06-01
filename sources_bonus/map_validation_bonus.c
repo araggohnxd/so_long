@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 12:06:11 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 13:44:43 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:42:45 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ static void	ft_init_data(t_data *data)
 	data->collected = 0;
 	data->moves = 0;
 	data->end_game = 0;
+	data->dead_player = 0;
 	data->loop_tick = 0;
+	data->player_moved = 0;
 }
 
 int	ft_validate_map(t_data *data)
