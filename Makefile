@@ -21,7 +21,7 @@ SOURCES_FILES_BONUS =	so_long_bonus.c map_validation_bonus.c \
 						render_map_bonus.c controls_bonus.c \
 						player_movement_bonus.c init_images_bonus.c \
 						check_errors_bonus.c enemy_movement_bonus.c \
-						moves_counter_bonus.c
+						moves_counter_bonus.c destroy_images_bonus.c
 OBJECTS_FILES_BONUS =	${SOURCES_FILES_BONUS:.c=.o}
 SOURCES_PATH_BONUS =	${SOURCES_PATH}_bonus
 

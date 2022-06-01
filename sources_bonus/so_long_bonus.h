@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 18:42:35 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:38:20 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 # define MANYARG "Too many arguments.\n"
 # define BADMAP "Invalid map.\n"
 # define BADEXT "Invalid map file extension.\n"
-# define ALLOWED_CHARS "01CPEVH"
+# define ALLOWED_CHARS "01CPEIJKL"
 # define PLAYER_CHARS "PWASD"
 # define SCENARIO_CHARS "01CEORM"
-# define ENEMY_CHARS "VFHJ"
-# define ENEMY_CHARS_L "vfhj"
+# define ENEMY_CHARS "IJKL"
+# define ENEMY_CHARS_L "ijkl"
 
 // Error handling
 # define MLX_SUCCESS 0
@@ -42,6 +42,7 @@
 
 // Sprites
 # define SPRITE_SIZE 32
+# define ENEMY_SPEED 2
 # define FLOOR_XPM "./sprites/0.xpm"
 # define WALL_XPM "./sprites/1.xpm"
 # define COLLECT_XPM "./sprites/C.xpm"
@@ -51,10 +52,14 @@
 # define PLAYER_D_XPM "./sprites/P_D.xpm"
 # define CLOSE_XPM "./sprites/E_CLOSE.xpm"
 # define OPEN_XPM "./sprites/E_OPEN.xpm"
-# define ENEMY_1A_XPM "./sprites/X_1_A.xpm"
-# define ENEMY_2A_XPM "./sprites/X_2_A.xpm"
-# define ENEMY_1D_XPM "./sprites/X_1_D.xpm"
-# define ENEMY_2D_XPM "./sprites/X_2_D.xpm"
+# define ENEMY_1I_XPM "./sprites/X_1_I.xpm"
+# define ENEMY_1J_XPM "./sprites/X_1_J.xpm"
+# define ENEMY_1K_XPM "./sprites/X_1_K.xpm"
+# define ENEMY_1L_XPM "./sprites/X_1_L.xpm"
+# define ENEMY_2I_XPM "./sprites/X_2_I.xpm"
+# define ENEMY_2J_XPM "./sprites/X_2_J.xpm"
+# define ENEMY_2K_XPM "./sprites/X_2_K.xpm"
+# define ENEMY_2L_XPM "./sprites/X_2_L.xpm"
 # define RIP_XPM "./sprites/RIP.xpm"
 # define COUNTER_XPM "./sprites/COUNTER.xpm"
 
@@ -68,10 +73,14 @@ typedef struct s_img {
 	void	*player_d;
 	void	*exit_close;
 	void	*exit_open;
-	void	*enemy_1a;
-	void	*enemy_2a;
-	void	*enemy_1d;
-	void	*enemy_2d;
+	void	*enemy_1i;
+	void	*enemy_1j;
+	void	*enemy_1k;
+	void	*enemy_1l;
+	void	*enemy_2i;
+	void	*enemy_2j;
+	void	*enemy_2k;
+	void	*enemy_2l;
 	void	*rip;
 	void	*counter;
 }	t_img;
@@ -109,5 +118,6 @@ void	ft_init_images(t_data *data);
 int		ft_kill_player(t_data *data);
 void	ft_moves_counter(t_data *data);
 void	ft_render_sprite(t_data *data, void *image, int x, int y);
+void	ft_destroy_images(t_data *data);
 
 #endif /* SO_LONG_BONUS_H */

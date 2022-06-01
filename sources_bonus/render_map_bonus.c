@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 00:41:33 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 17:54:57 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:38:59 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ void	ft_render_sprite(t_data *data, void *image, int x, int y)
 
 static void	ft_render_enemy(t_data *data, char *key, int x, int y)
 {
-	if (*key == 'H' && x % 2 == 0)
-		ft_render_sprite(data, data->image.enemy_1a, x, y);
-	else if (*key == 'H' && x % 2 != 0)
-		ft_render_sprite(data, data->image.enemy_2a, x, y);
-	else if (*key == 'J' && x % 2 != 0)
-		ft_render_sprite(data, data->image.enemy_1d, x, y);
+	if (*key == 'I' && y % 2 == 0)
+		ft_render_sprite(data, data->image.enemy_1i, x, y);
+	else if (*key == 'I' && y % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_2i, x, y);
 	else if (*key == 'J' && x % 2 == 0)
-		ft_render_sprite(data, data->image.enemy_2d, x, y);
-	else if (*key == 'F' && y % 2 == 0)
-		ft_render_sprite(data, data->image.enemy_1a, x, y);
-	else if (*key == 'F' && y % 2 != 0)
-		ft_render_sprite(data, data->image.enemy_2a, x, y);
-	else if (*key == 'V' && y % 2 != 0)
-		ft_render_sprite(data, data->image.enemy_1d, x, y);
-	else if (*key == 'V' && y % 2 == 0)
-		ft_render_sprite(data, data->image.enemy_2d, x, y);
+		ft_render_sprite(data, data->image.enemy_1j, x, y);
+	else if (*key == 'J' && x % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_2j, x, y);
+	else if (*key == 'K' && y % 2 == 0)
+		ft_render_sprite(data, data->image.enemy_1k, x, y);
+	else if (*key == 'K' && y % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_2k, x, y);
+	else if (*key == 'L' && x % 2 == 0)
+		ft_render_sprite(data, data->image.enemy_1l, x, y);
+	else if (*key == 'L' && x % 2 != 0)
+		ft_render_sprite(data, data->image.enemy_2l, x, y);
 }
 
 static void	ft_render_player(t_data *data, char *key, int x, int y)

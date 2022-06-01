@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 22:54:51 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 21:17:58 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:28:30 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 static void	ft_init_enemy(t_data *data)
 {
-	data->image.enemy_1a = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1A_XPM,
+	data->image.enemy_1i = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1I_XPM,
 			&data->map_width, &data->map_height);
-	data->image.enemy_2a = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2A_XPM,
+	data->image.enemy_1j = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1J_XPM,
 			&data->map_width, &data->map_height);
-	data->image.enemy_1d = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1D_XPM,
+	data->image.enemy_1k = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1K_XPM,
 			&data->map_width, &data->map_height);
-	data->image.enemy_2d = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2D_XPM,
+	data->image.enemy_1l = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_1L_XPM,
+			&data->map_width, &data->map_height);
+	data->image.enemy_2i = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2I_XPM,
+			&data->map_width, &data->map_height);
+	data->image.enemy_2j = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2J_XPM,
+			&data->map_width, &data->map_height);
+	data->image.enemy_2k = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2K_XPM,
+			&data->map_width, &data->map_height);
+	data->image.enemy_2l = mlx_xpm_file_to_image(data->mlx_ptr, ENEMY_2L_XPM,
 			&data->map_width, &data->map_height);
 }
 
