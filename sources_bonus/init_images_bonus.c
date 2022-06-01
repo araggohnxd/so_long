@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 22:54:51 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/28 02:33:12 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 21:17:58 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	ft_init_scenario(t_data *data)
 	data->image.exit_open = mlx_xpm_file_to_image(data->mlx_ptr, OPEN_XPM,
 			&data->map_width, &data->map_height);
 	data->image.rip = mlx_xpm_file_to_image(data->mlx_ptr, RIP_XPM,
+			&data->map_width, &data->map_height);
+	data->image.counter = mlx_xpm_file_to_image(data->mlx_ptr, COUNTER_XPM,
 			&data->map_width, &data->map_height);
 }
 

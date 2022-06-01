@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:26 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 20:45:28 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 21:32:16 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_move_player(char key, t_data *data)
 
 static int	ft_check_mov(char key, t_data *data, char *pos)
 {
-	if (*pos == '1')
+	if (ft_strchr("1M", *pos))
 	{
 		data->map[data->player_y][data->player_x] = key;
 		return (FALSE);
@@ -66,5 +66,5 @@ void	ft_player_movement(int keysym, t_data *data)
 		player_moved = ft_check_mov(
 				'D', data, &data->map[data->player_y][data->player_x + 1]);
 	if (player_moved)
-		ft_printf(CYAN CLEAR"Moves: %d\n"RESET, ++(data->moves));
+		++(data->moves);
 }

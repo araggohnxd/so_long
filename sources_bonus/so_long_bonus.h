@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 15:21:38 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/05/31 21:18:08 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define BADEXT "Invalid map file extension.\n"
 # define ALLOWED_CHARS "01CPEVH"
 # define PLAYER_CHARS "PWASD"
-# define SCENARIO_CHARS "01CEOR"
+# define SCENARIO_CHARS "01CEORM"
 # define ENEMY_CHARS "VFHJ"
 # define ENEMY_CHARS_L "vfhj"
 
@@ -56,6 +56,7 @@
 # define ENEMY_1D_XPM "./sprites/X_1_D.xpm"
 # define ENEMY_2D_XPM "./sprites/X_2_D.xpm"
 # define RIP_XPM "./sprites/RIP.xpm"
+# define COUNTER_XPM "./sprites/COUNTER.xpm"
 
 typedef struct s_img {
 	void	*floor;
@@ -72,6 +73,7 @@ typedef struct s_img {
 	void	*enemy_1d;
 	void	*enemy_2d;
 	void	*rip;
+	void	*counter;
 }	t_img;
 
 typedef struct s_data {
@@ -103,5 +105,6 @@ void	ft_enemy_movement(t_data *data);
 int		ft_end_game(t_data *data, char key);
 void	ft_init_images(t_data *data);
 int		ft_kill_player(t_data *data);
+void	ft_moves_counter(t_data *data);
 
 #endif /* SO_LONG_BONUS_H */
