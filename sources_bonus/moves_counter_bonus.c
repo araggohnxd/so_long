@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:09:57 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 18:44:27 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:49:45 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_moves_counter(t_data *data)
 	else if (data->end_game)
 		mlx_string_put(data->mlx_ptr, data->win_ptr,
 			SPRITE_SIZE / 2, SPRITE_SIZE / 2, 0x00FFFF, "You won!");
-	else if (data->player_moved)
+	else
 	{
 		moves_str = ft_itoa(data->moves);
 		mlx_string_put(data->mlx_ptr, data->win_ptr,
