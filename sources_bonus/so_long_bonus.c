@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/05/31 21:30:31 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 02:21:20 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	ft_loop_hook(t_data *data)
 	ft_render_map(data);
 	ft_moves_counter(data);
 	ft_enemy_movement(data);
-	++(data->loop_tick);
 	return (0);
 }
 
