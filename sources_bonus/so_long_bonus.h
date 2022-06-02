@@ -42,7 +42,7 @@
 
 // Sprites
 # define SPRITE_SIZE 32
-# define ENEMY_SPEED 2
+# define ENEMY_SPEED 100
 # define FLOOR_XPM "./sprites/0.xpm"
 # define WALL_XPM "./sprites/1.xpm"
 # define COLLECT_XPM "./sprites/C.xpm"
