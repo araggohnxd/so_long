@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:52:36 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 02:21:20 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/02 12:36:57 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,26 @@ static int	ft_loop_hook(t_data *data)
 	return (0);
 }
 
-static int	ft_init_game(t_data *data)
+static void	ft_init_game(t_data *data)
 {
 	data->map_height *= SPRITE_SIZE;
 	data->map_width *= SPRITE_SIZE;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (FALSE);
+		exit(MLX_ERROR);
 	data->win_ptr = mlx_new_window(data->mlx_ptr,
 			data->map_width, data->map_height, "so_long");
 	if (!data->win_ptr)
 	{
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
-		return (FALSE);
+		exit(MLX_ERROR);
 	}
 	ft_init_images(data);
 	mlx_loop_hook(data->mlx_ptr, ft_loop_hook, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, ft_keypress_handler, data);
 	mlx_hook(data->win_ptr, DestroyNotify, NoEventMask, ft_close_game, data);
 	mlx_loop(data->mlx_ptr);
-	return (TRUE);
 }
 
 static char	**ft_get_map(char *map)
