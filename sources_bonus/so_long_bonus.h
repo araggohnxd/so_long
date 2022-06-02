@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:24:18 by maolivei          #+#    #+#             */
-/*   Updated: 2022/06/01 20:38:20 by maolivei         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:10:30 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,19 @@ typedef struct s_data {
 	int		player_moved;
 }	t_data;
 
-void	ft_check_errors(int argc, char *argv[]);
 int		ft_validate_map(t_data *data);
-void	ft_render_map(t_data *data);
 int		ft_keypress_handler(int keysym, t_data *data);
 int		ft_close_game(t_data *data);
 int		ft_move_entity(char *from, char *to, char old_char, char new_char);
+int		ft_end_game(t_data *data, char key);
+int		ft_kill_player(t_data *data);
+void	ft_check_errors(int argc, char *argv[]);
+void	ft_init_images(t_data *data);
+void	ft_destroy_images(t_data *data);
+void	ft_render_map(t_data *data);
+void	ft_render_sprite(t_data *data, void *image, int x, int y);
 void	ft_player_movement(int keysym, t_data *data);
 void	ft_enemy_movement(t_data *data);
-int		ft_end_game(t_data *data, char key);
-void	ft_init_images(t_data *data);
-int		ft_kill_player(t_data *data);
 void	ft_moves_counter(t_data *data);
-void	ft_render_sprite(t_data *data, void *image, int x, int y);
-void	ft_destroy_images(t_data *data);
 
 #endif /* SO_LONG_BONUS_H */
